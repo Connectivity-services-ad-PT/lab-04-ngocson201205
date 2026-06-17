@@ -6,6 +6,9 @@ info:
     Contract dùng cho Lab 04 Docker packaging, được đồng bộ lại với logic Lab 03.
     Payload chính dùng các trường device_id, metric, value, unit và timestamp.
     Boundary minh họa cho temperature là -40 đến 80.
+  contact:
+    name: FIT4110 Lab Team
+    email: ngocson201205@example.edu.vn
 servers:
   - url: http://localhost:8000
     description: Local or Docker container service
@@ -190,6 +193,7 @@ paths:
     get:
       tags: [readings]
       operationId: getReadingById
+      description: Return a sensor reading detail by `reading_id`.
       summary: Lấy chi tiết một bản ghi cảm biến
       parameters:
         - name: reading_id
