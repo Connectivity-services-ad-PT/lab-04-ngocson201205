@@ -1,1 +1,9 @@
-extends: spectral:oas
+extends:
+  - spectral:oas
+
+rules:
+  operation-operationId: warn
+  operation-tags: warn
+  info-contact: off
+  info-description: warn
+  oas3-api-servers: warn

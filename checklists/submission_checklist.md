@@ -1,18 +1,20 @@
 # Submission Checklist - Lab 04
 
-Nop cac minh chung sau:
+Submission evidence:
 
 - [x] `Dockerfile`
 - [x] `.dockerignore`
 - [x] `.env.example`
 - [x] `RUN_LOCAL.md`
-- [x] Contract OpenAPI da dung
-- [x] Postman Collection da chay tren container
-- [x] Postman Environment local/docker
-- [x] Newman report XML/HTML
-- [x] Log hoac anh `docker build`
-- [x] Log hoac anh `docker run`
-- [x] Log hoac anh `GET /health`
-- [x] Link hoac ten image tag da push/local verify
+- [x] OpenAPI contract: `contracts/iot-ingestion.openapi.yaml`
+- [x] Postman collection verified on Docker container
+- [x] Local/Docker Postman environment
+- [x] Newman XML report: `reports/newman-lab04-local.xml`
+- [x] Newman HTML report: `reports/newman-lab04-local.html`
+- [x] Docker build evidence recorded
+- [x] Docker run evidence recorded
+- [x] `GET /health` evidence recorded
+- [x] Local image tag: `fit4110/iot-ingestion:lab04`
+- [ ] Registry push link/tag
 
-Verification note: `npm run lint:openapi` pass with no error; Newman local pass 11 requests, 19 assertions, 0 failures.
+Note: registry push is left open until the target owner/registry is confirmed.

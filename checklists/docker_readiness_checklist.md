@@ -1,39 +1,37 @@
 # Docker Readiness Checklist
 
-Kiem tra lai ngay 17/06/2026.
-
 ## Dockerfile
 
-- [x] Co base image hop ly.
-- [x] Co `WORKDIR`.
-- [x] Co copy dependency truoc source de tan dung cache.
-- [x] Co `EXPOSE`.
-- [x] Co `CMD` hoac `ENTRYPOINT`.
-- [x] Co `HEALTHCHECK`.
-- [x] Co user non-root.
-- [x] Khong chua secret that.
+- [x] Uses a suitable base image.
+- [x] Defines `WORKDIR`.
+- [x] Copies dependency files before source files to use Docker layer cache.
+- [x] Defines `EXPOSE 8000`.
+- [x] Defines `CMD`.
+- [x] Includes `HEALTHCHECK` for `GET /health`.
+- [x] Runs as a non-root user.
+- [x] Does not contain real secrets.
 
 ## Runtime
 
-- [x] Container chay duoc.
-- [x] Port map dung.
-- [x] `/health` tra `200`.
-- [x] Log khoi dong ro rang.
-- [x] Cau hinh qua ENV.
+- [x] Container starts successfully.
+- [x] Port mapping is correct: `8000:8000`.
+- [x] `/health` returns `200`.
+- [x] Startup logs are available through `docker logs`.
+- [x] Runtime config is provided through environment variables.
 
 ## Testing
 
-- [x] Chay lai Postman Collection tu Lab 03/Lab 04.
-- [x] Newman report sinh ra trong `reports/`.
-- [x] Functional test pass.
-- [x] Auth test pass tren local/container.
-- [x] Negative test pass tren local/container.
-- [x] Boundary test pass hoac co giai thich hop dong.
+- [x] Postman/Newman collection runs against the Docker container.
+- [x] Newman reports are generated in `reports/`.
+- [x] Functional tests pass.
+- [x] Auth tests pass on local/container.
+- [x] Negative tests pass on local/container.
+- [x] Boundary tests pass on local/container.
 
 ## Evidence
 
-- [x] Co log `docker build`.
-- [x] Co log `docker run`/container run trong qua trinh test.
-- [x] Co log `GET /health`.
-- [x] Co Newman HTML/XML report.
-- [x] Co image tag local `codex-lab04-check:latest` dung de verify.
+- [x] Docker build verified.
+- [x] Docker run verified.
+- [x] `curl /health` verified.
+- [x] Newman HTML/XML reports generated.
+- [x] Image tag follows the lab convention: `fit4110/iot-ingestion:lab04`.

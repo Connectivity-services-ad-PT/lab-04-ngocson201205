@@ -87,13 +87,6 @@ class SensorReadingCreated(BaseModel):
 READINGS: List[Dict] = []
 
 
-def http_status_phrase(status_code: int) -> str:
-    try:
-        return HTTPStatus(status_code).phrase
-    except ValueError:
-        return "HTTP Error"
-
-
 def build_problem(
     *,
     status_code: int,
@@ -113,6 +106,13 @@ def build_problem(
     return problem
 
 
+def reason_phrase(status_code: int) -> str:
+    try:
+        return HTTPStatus(status_code).phrase
+    except ValueError:
+        return "HTTP Error"
+
+
 @app.exception_handler(HTTPException)
 async def http_exception_handler(request: Request, exc: HTTPException) -> JSONResponse:
     if isinstance(exc.detail, dict):
@@ -120,13 +120,13 @@ async def http_exception_handler(request: Request, exc: HTTPException) -> JSONRe
     else:
         problem = build_problem(
             status_code=exc.status_code,
-            title=http_status_phrase(exc.status_code),
+            title=reason_phrase(exc.status_code),
             detail=str(exc.detail),
             instance=str(request.url.path),
         )
 
     problem.setdefault("status", exc.status_code)
-    problem.setdefault("title", http_status_phrase(exc.status_code))
+    problem.setdefault("title", reason_phrase(exc.status_code))
     problem.setdefault("type", "about:blank")
     problem.setdefault("detail", "Request failed")
     problem.setdefault("instance", str(request.url.path))
